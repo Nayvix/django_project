@@ -1,0 +1,12 @@
+<h1>Cryptids record</h1>
+
+<h2>Here is a list of all the recorded cryptids in the app:</h2>
+{% if cryptids_list %} <!-- If else in case there is no cryptids -->
+    <ul>
+    {% for cryptid in cryptids_list %} <!--Displays a list of all the cryptids registered in the app -->
+        <li><a href="{% url 'cryptids:detail' cryptid.id %}">{{ cryptid.cryptid_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No cryptid registered yet.</p>
+{% endif %}

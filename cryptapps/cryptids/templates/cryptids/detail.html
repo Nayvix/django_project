@@ -1,0 +1,11 @@
+<h1>{{ cryptid.cryptid_name }}</h1> <!-- Display the cryptid's name -->
+<h2>Behaviour: {{ cryptid.behaviour }}</h2> <!-- Displays the behaviour's function result -->
+<h2>Habitat: {{ cryptid.get_habitat }}</h2> <!-- Displays the cryptid's habitat's name -->
+<h2>Related incidents:</h2>
+<ul>
+<!-- Displays a list of all incidents linked to the cryptid, by looking at all the Sighting linked to the Cryptid-->
+{% for sighting in cryptid.sighting_set.all %}
+    <li>{{ sighting.sighting_date }}, in {{sighting.sighting_site}}</li>
+{% endfor %}
+</ul>
+<h3><a href="{% url 'cryptids:index' %}">Back to index</a></h3> <!-- A hyperlink to go back to the index -->
